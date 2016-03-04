@@ -130,6 +130,10 @@ public class MailConnection extends AbstractConnection {
     }
 
     public void executeScript(Resource scriptContent, ParametersCallback parametersCallback) throws ProviderException {
+        //https://community.oracle.com/message/6669976#6669976
+        //"no object DCH for MIME type multipart/related" error
+        Thread.currentThread().setContextClassLoader( getClass().getClassLoader() );
+
         PropertiesSubstitutor ps = new PropertiesSubstitutor(parametersCallback);
         MimeMessage mimeMessage;
         String addresslist = ps.substitute(to);
