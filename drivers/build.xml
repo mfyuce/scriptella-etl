@@ -9,6 +9,9 @@
         <pathelement location="${basedir}/../lib/commons-jexl.jar"/>
         <pathelement location="${basedir}/../lib/j2ee/mail.jar"/>
         <pathelement location="${basedir}/../lib/j2ee/activation.jar"/>
+        <pathelement location="${basedir}/../lib/j2ee/activation.jar"/>
+        <pathelement location="${basedir}/../lib/scriptjsc/ScriptCs.Embedded.Binaries/jni4net.j-0.8.8.0.jar"/>
+        <pathelement location="${basedir}/../lib/scriptjsc/ScriptCs.Embedded.Binaries/ScriptCs.Embedded.j4n.jar"/>
     </path>
     <path id="test.classpath">
         <path refid="classpath"/>
@@ -18,6 +21,8 @@
         <pathelement location="${basedir}/../lib/h2.jar"/>
         <pathelement location="${basedir}/../lib/commons-jexl.jar"/>
         <pathelement location="${basedir}/../lib/junit.jar"/>
+        <pathelement location="${basedir}/../lib/scriptjsc/ScriptCs.Embedded.Binaries/jni4net.j-0.8.8.0.jar"/>
+        <pathelement location="${basedir}/../lib/scriptjsc/ScriptCs.Embedded.Binaries/ScriptCs.Embedded.j4n.jar"/>
     </path>
     <import file="../build-templates/build-template.xml"/>
 
