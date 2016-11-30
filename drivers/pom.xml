@@ -83,5 +83,19 @@
             <artifactId>h2</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>jni4net.j-0.8.8.0.jar</groupId>
+            <artifactId>jni4net.j-0.8.8.0.jar</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/../lib/scriptjcs/jni4net-0.8.8.0-bin/lib/jni4net.j-0.8.8.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>ScriptCs.Embedded.j4n.jar</groupId>
+            <artifactId>ScriptCs.Embedded.j4n.jar</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/../lib/scriptjcs/ScriptCs.Embedded.Binaries/ScriptCs.Embedded.j4n.jar</systemPath>
+        </dependency>
     </dependencies>
 </project>
