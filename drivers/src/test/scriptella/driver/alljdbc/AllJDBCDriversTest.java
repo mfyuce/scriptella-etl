@@ -24,17 +24,8 @@ import scriptella.util.IOUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Blob;
-import java.sql.Clob;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.sql.*;
+import java.util.*;
 
 
 /**
@@ -239,6 +230,5 @@ public class AllJDBCDriversTest extends AbstractTestCase {
     public void checkCData(Object cdata) {
         assertEquals(clob, cdata);
     }
-
 
 }

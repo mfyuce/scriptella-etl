@@ -44,5 +44,4 @@ public class Driver extends GenericDriver {
         }
         return super.getConnection(h2Url, props);
     }
-
 }

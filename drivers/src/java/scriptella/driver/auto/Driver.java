@@ -26,11 +26,7 @@ import scriptella.util.StringUtils;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 import java.util.logging.Logger;
 
 /**
@@ -99,5 +95,10 @@ public class Driver extends AbstractScriptellaDriver {
         } catch (ClassNotFoundException e) {
             throw new ConfigurationException("Unable to initialize driver " + driver, e);
         }
+    }
+
+    public String[] getDriverClassNames() {
+        String[] ret = new String[MAPPINGS.size()];
+        return MAPPINGS.keySet().toArray(ret);
     }
 }

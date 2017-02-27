@@ -15,7 +15,6 @@
  */
 package scriptella.driver.jcs;
 
-import scriptcs.embedded.ExecutionManager;
 import scriptella.spi.AbstractScriptellaDriver;
 import scriptella.spi.Connection;
 import scriptella.spi.ConnectionParameters;
@@ -33,5 +32,9 @@ public class Driver extends AbstractScriptellaDriver {
 
     public Connection connect(ConnectionParameters connectionParameters) {
         return new JCSConnection(connectionParameters);
+    }
+
+    public String[] getDriverClassNames() {
+        return new String[] {DIALECT.getName()};
     }
 }

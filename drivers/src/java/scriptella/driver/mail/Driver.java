@@ -44,4 +44,8 @@ public class Driver extends AbstractScriptellaDriver {
     public Connection connect(ConnectionParameters connectionParameters) {
         return new MailConnection(connectionParameters);
     }
+
+    public String[] getDriverClassNames() {
+        return new String[] {DIALECT.getName()};
+    }
 }

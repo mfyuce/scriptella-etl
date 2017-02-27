@@ -40,7 +40,7 @@ public class Driver extends AbstractScriptellaDriver {
 
     }
 
-
-
-
+    public String[] getDriverClassNames() {
+        return new String[] {DIALECT.getName()};
+    }
 }

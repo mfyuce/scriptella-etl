@@ -16,14 +16,7 @@
 package scriptella.jdbc;
 
 import scriptella.configuration.ConfigurationException;
-import scriptella.spi.AbstractConnection;
-import scriptella.spi.ConnectionParameters;
-import scriptella.spi.DialectIdentifier;
-import scriptella.spi.NativeConnectionProvider;
-import scriptella.spi.ParametersCallback;
-import scriptella.spi.ProviderException;
-import scriptella.spi.QueryCallback;
-import scriptella.spi.Resource;
+import scriptella.spi.*;
 import scriptella.util.StringUtils;
 
 import java.sql.Connection;
@@ -302,7 +295,6 @@ public class JdbcConnection extends AbstractConnection implements NativeConnecti
         }
     }
 
-    @Override
     public Connection getNativeConnection() {
         return con;
     }

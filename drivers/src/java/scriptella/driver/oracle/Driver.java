@@ -40,5 +40,4 @@ public class Driver extends GenericDriver {
     protected JdbcConnection connect(ConnectionParameters parameters, Properties props) throws SQLException {
         return new OracleConnection(getConnection(parameters.getUrl(), props), parameters);
     }
-
 }

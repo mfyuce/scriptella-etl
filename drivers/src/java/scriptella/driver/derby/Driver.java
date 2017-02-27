@@ -39,5 +39,4 @@ public class Driver extends GenericDriver {
     public Driver() {
         loadDrivers(DERBY_CLIENT_DRIVER_NAME, DERBY_EMBEDDED_DRIVER_NAME);
     }
-
 }

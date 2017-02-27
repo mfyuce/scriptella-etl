@@ -36,4 +36,10 @@ public interface ScriptellaDriver {
      * @return Driver's meaningful name
      */
     String toString();
+
+
+    /**
+     * @return Driver's url that is used to connect to
+     */
+    String[] getDriverClassNames();
 }

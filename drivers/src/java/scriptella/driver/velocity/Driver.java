@@ -31,11 +31,12 @@ import java.util.logging.Logger;
 public class Driver extends AbstractScriptellaDriver {
     static final DialectIdentifier DIALECT = new DialectIdentifier("Velocity", "1.4");
     static final Logger LOG = Logger.getLogger(Driver.class.getName());
+    public static final String ORG_APACHE_VELOCITY_VELOCITY_CONTEXT = "org.apache.velocity.VelocityContext";
 
 
     public Driver() {
         try { //Check if velocity is on classpath
-            Class.forName("org.apache.velocity.VelocityContext");
+            Class.forName(ORG_APACHE_VELOCITY_VELOCITY_CONTEXT);
         } catch (ClassNotFoundException e) {
             throw new VelocityProviderException("Velocity not found on classpath. Check if connection classpath attribute points to velocity-dep.jar");
         }
@@ -51,5 +52,7 @@ public class Driver extends AbstractScriptellaDriver {
         return new VelocityConnection(connectionParameters);
     }
 
-
+    public String[] getDriverClassNames() {
+        return new String[] {ORG_APACHE_VELOCITY_VELOCITY_CONTEXT};
+    }
 }

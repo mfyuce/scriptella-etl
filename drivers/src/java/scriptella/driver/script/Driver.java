@@ -29,9 +29,11 @@ import scriptella.spi.ConnectionParameters;
  */
 public class Driver extends AbstractScriptellaDriver {
 
+    public static final String JAVAX_SCRIPT_SCRIPT_ENGINE = "javax.script.ScriptEngine";
+
     public Driver() {
         try { //Check if javax.script is available
-            Class.forName("javax.script.ScriptEngine");
+            Class.forName(JAVAX_SCRIPT_SCRIPT_ENGINE);
         } catch (ClassNotFoundException e) {
             throw new ScriptProviderException("Java SE 6 or higher is required for this driver to operate.", e);
         }
@@ -39,5 +41,9 @@ public class Driver extends AbstractScriptellaDriver {
 
     public Connection connect(ConnectionParameters connectionParameters) {
         return new ScriptConnection(connectionParameters);
+    }
+
+    public String[] getDriverClassNames() {
+        return new String[] {JAVAX_SCRIPT_SCRIPT_ENGINE};
     }
 }

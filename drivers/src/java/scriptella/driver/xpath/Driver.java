@@ -33,4 +33,9 @@ public class Driver extends AbstractScriptellaDriver {
     public Connection connect(ConnectionParameters connectionParameters) {
         return new XPathConnection(connectionParameters);
     }
+
+    public String[] getDriverClassNames() {
+        return new String[] {DIALECT.getName()};
+    }
+
 }

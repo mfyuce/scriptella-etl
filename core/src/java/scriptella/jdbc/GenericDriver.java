@@ -22,7 +22,9 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.Properties;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,6 +35,7 @@ import java.util.logging.Logger;
  * @version 1.0
  */
 public class GenericDriver extends AbstractScriptellaDriver {
+    ConcurrentHashMap<String,Boolean>driverList= new ConcurrentHashMap<String,Boolean>();
 
     private static final Logger LOG = Logger.getLogger(GenericDriver.class.getName());
 
@@ -62,6 +65,9 @@ public class GenericDriver extends AbstractScriptellaDriver {
             Throwable throwable = null;
             final boolean debug = LOG.isLoggable(Level.FINE);
             for (String name : drivers) {
+                if(!driverList.containsKey(name)){
+                    driverList.put(name,true);
+                }
                 try {
                     try {
                         Class.forName(name);
@@ -129,5 +135,8 @@ public class GenericDriver extends AbstractScriptellaDriver {
         return DriverManager.getConnection(url, props);
     }
 
-
+    public String[] getDriverClassNames() {
+        String[] keys = new String[driverList.size()];
+        return Collections.list(driverList.keys()).toArray(keys);
+    }
 }

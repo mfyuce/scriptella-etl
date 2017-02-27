@@ -45,4 +45,7 @@ public class Driver extends AbstractScriptellaDriver {
         return new LuceneConnection(connectionParameters);
     }
 
+    public String[] getDriverClassNames() {
+        return new String[] {DIALECT_IDENTIFIER.getName()};
+    }
 }
