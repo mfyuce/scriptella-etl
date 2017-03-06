@@ -32,6 +32,7 @@ public class OracleConnection extends JdbcConnection {
      * Name plsql property. A slash on a single line is used as statements separator.
      */
     public static final String PLSQL = "plsql";
+    public static final String INITIAL_SCRIPT = "initialscript";
 
     /**
      * Creates a wrapper for HSQL connection.
@@ -48,6 +49,10 @@ public class OracleConnection extends JdbcConnection {
         if (parameters.getBooleanProperty(PLSQL, false)) {
             separator = "/";
             separatorSingleLine = true;
+        }
+        String initialScriptProperty=parameters.getStringProperty(INITIAL_SCRIPT);
+        if (initialScriptProperty!="") {
+            initialScript = initialScriptProperty;
         }
     }
 

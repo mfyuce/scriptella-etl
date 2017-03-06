@@ -22,6 +22,7 @@ import scriptella.util.StringUtils;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.IdentityHashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -59,6 +60,7 @@ public class JdbcConnection extends AbstractConnection implements NativeConnecti
     protected int statementFetchSize;
     protected boolean flushBeforeQuery;
     protected String separator = ";";
+    protected String initialScript = "";
     protected boolean separatorSingleLine;
     protected boolean keepformat;
     protected int autocommitSize;
@@ -92,6 +94,21 @@ public class JdbcConnection extends AbstractConnection implements NativeConnecti
                 con.setAutoCommit(autocommit);
             } catch (Exception e) {
                 throw new JdbcException("Unable to set autocommit=false for " + toString(), e);
+            }
+        }
+
+        if (initialScript != null && initialScript.length() > 0) {
+            LOG.log(Level.INFO, "Executing initial script : " + initialScript);
+            Statement st = null;
+            try {
+                st = con.createStatement();
+            } catch (SQLException e) {
+                LOG.log(Level.WARNING, "Error when executing initial script", e);
+            }
+            try {
+                st.execute(initialScript);
+            } catch (SQLException e) {
+                LOG.log(Level.WARNING, "Error when executing initial script", e);
             }
         }
     }
@@ -204,7 +221,6 @@ public class JdbcConnection extends AbstractConnection implements NativeConnecti
         }
         s.execute(parametersCallback);
     }
-
     public void executeQuery(Resource queryContent, ParametersCallback parametersCallback, QueryCallback queryCallback) {
     	SqlExecutor q = resourcesMap.get(queryContent);
         if (q == null) {

@@ -88,8 +88,6 @@ class SqlExecutor extends SqlParserBase implements Closeable {
         if (cache) {
             cachedTokenizer=tok;
         }
-        
-
     }
 
     int getUpdateCount() {
